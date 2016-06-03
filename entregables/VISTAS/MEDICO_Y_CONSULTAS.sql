@@ -1,3 +1,7 @@
+--Vista MEDICO_Y_CONSULTAS
+--INNER JOIN de las tablas MEDICO Y CONSULTAS
+--Contribuye a la solución de los problemas establecidos
+--por los requerimientos.
 CREATE OR REPLACE VIEW MEDICO_Y_CONSULTAS 
 AS
 SELECT M.IDMEDICO

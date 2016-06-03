@@ -1,3 +1,8 @@
+--Procedimiento INGRESO_MEDICO_FECHAS
+--Imprime en consola el ingreso obtenido por cada médico
+--en el intervalo de dos fechas establecidas con anterioridad.
+--Recibe como parámetros dos fechas, una de inicio y una final.
+--Soluciona el requerimiento número 4: Ingreso por médico en un rango de fechas ordenado de mayor a menor.
 CREATE OR REPLACE
 PROCEDURE INGRESO_MEDICO_FECHAS (FECHA01 IN DATE , FECHA02 IN DATE)
 IS

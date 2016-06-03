@@ -1,3 +1,9 @@
+--Procedimiento INGRESO_ESPECIALIDAD_FECHAS
+--Imprime en consola el ingreso obtenido por especialidad
+--en el rango de dos fechas establecidas con anterioridad.
+--Recibe como parámetro dos fechas, una de inicio y una final.
+--Soluciona el requerimiento número 3: Ingreso por consultas en un rango de fechas por cada especialidad.
+--
 CREATE OR REPLACE PROCEDURE INGRESO_ESPECIALIDAD_FECHAS(FECHA01 IN DATE, FECHA02 IN DATE) 
 IS
 NUM INFORMACION_COMPLETA.PRECIO%TYPE;

@@ -1,3 +1,7 @@
+--Vista INFORMACION_COMPLETA
+--Muestra la información de todas las tablas.
+--Contribuye a la solución de los problemas establecidos
+--por los requerimientos.
 CREATE OR REPLACE VIEW INFORMACION_COMPLETA
 AS
 SELECT E.NOMBRE ESPECIALIDAD
