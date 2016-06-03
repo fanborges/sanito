@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Cp1252" />
+<script src="../dbdoc.js" type="text/javascript"></script>
+<link href="../dbdoc.css" type="text/css" rel="stylesheet">
+</head>
+<body class="object">
+<div id="header"><h2>INGRESO_MEDICO_FECHAS</h2>
+<div class="tabs clearfix">
+
+<div class="tab"><div><a href="INGRESO_MEDICO_FECHAS.html">Details</a></div></div>
+<div class="tab"><div><a href="INGRESO_MEDICO_FECHAS_Grants.html">Grants</a></div></div>
+<div class="tab"><div><a href="INGRESO_MEDICO_FECHAS_References.html">References</a></div></div>
+<div class="tab"><div><a href="INGRESO_MEDICO_FECHAS_Dependencies.html">Dependencies</a></div></div>
+<div class="tab" id="current"><div><a href="INGRESO_MEDICO_FECHAS_Code.html">Code</a></div></div>
+</div></div><br/>
+<div class="tab-panes">
+<div id="Code"> <table cellpadding="0" cellspacing="0" cellspacing="0" summary=""><tr>
+	<th>TEXT</th>
+</tr>
+	<tr><td><pre>
+PROCEDURE INGRESO_MEDICO_FECHAS (FECHA01 IN DATE , FECHA02 IN DATE)
+IS
+NUM INFORMACION_COMPLETA.PRECIO%TYPE;
+NOM MEDICO.NOMBRE%TYPE;
+PAT MEDICO.PATERNO%TYPE;
+MAT MEDICO.MATERNO%TYPE;
+
+CURSOR C1 IS
+SELECT M.NOMBRE, M.PATERNO, M.MATERNO  
+,SUM (I.PRECIO) PRECIO
+FROM INFORMACION_COMPLETA I
+INNER JOIN MEDICO M
+ON M.IDMEDICO=I.IDMEDICO
+WHERE I.FECHA BETWEEN FECHA01 AND FECHA02 GROUP BY M.NOMBRE, M.PATERNO, M.MATERNO
+ORDER BY PRECIO DESC;
+BEGIN
+OPEN C1;
+DBMS_OUTPUT.PUT_LINE('El ingreso por médico entre ' || FECHA01 || ' y ' || FECHA02 || ' es :'); 
+LOOP
+FETCH C1 INTO NOM , PAT , MAT, NUM;
+EXIT WHEN C1%NOTFOUND;
+DBMS_OUTPUT.PUT_LINE('Médico: ' || NOM || ' ' || PAT || ' ' || MAT);
+DBMS_OUTPUT.PUT_LINE('Ingresos: ' || NUM );
+DBMS_OUTPUT.PUT_LINE('--------------------------------------------');
+COMMIT;
+END LOOP;
+CLOSE C1;
+END;</pre>	</td></tr>
+</table></div>
